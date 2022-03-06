@@ -18,9 +18,14 @@
 
     $headers .= "Reply-To: $visitor_email \r\n";
 
-    mail($to,$email_subject,$email_body,$headers);
 
-    header("Location: index.html");
+    if (mail($to, $email_subject, $email_body, $headers)) {
+        echo "Thank You! Your message has been sent!";
+}       else {
+        echo "Failed to send message";
+}
+
+header("Location: index.html");
 
 
 ?>
